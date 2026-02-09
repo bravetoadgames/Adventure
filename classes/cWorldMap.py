@@ -65,12 +65,9 @@ class WorldMap:
     """
     def loadMap(self):
         map_data = None
-        x = 0
-        y = 0
-
         
         # Read the map datafile
         with open('data/map.dat') as file:
-            self.world_map = file.read()
+            map_data = file.read()
 
         self.world_map = map_data
