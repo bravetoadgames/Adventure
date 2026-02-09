@@ -76,17 +76,4 @@ class WorldMap:
         with open('data/map.dat') as file:
             map_data = file.read()
 
-        # Define the 2D array
-        rows, cols = (self.map_size_y, self.map_size_x)
-        self.world_map = [[0]*cols]*rows
-
-
-        # Convert textfile to 2 dimensional array
-        for i in range(len(map_data)):
-            # self.world_map[[y]*x] = map_data[i]   # Get a single character
-            x = x + 1                               # Move up the cursor in the array
-
-            if x > self.map_size_x:                 # Running out of columns?
-                x = 0                               # Move cursor to 0 
-                y = y +1                            # Add a new row to array
-                
+        self.world_map = map_data
