@@ -20,13 +20,13 @@ WorldMap class
 """
 class WorldMap:
 
-    world_size_x = 80
-    world_size_y = 20
+    map_size_x = 80
+    map_size_y = 20
     
     viewport_x = 20
     viewport_y = 10
     
-    map = []
+    world_map = []
     
     """
     -----------------------------
@@ -46,17 +46,22 @@ class WorldMap:
     """
     def draw(self, character_position_x, character_position_y):
 
-        x = character_position_x
-        y = character_position_y
+        cx = character_position_x
+        cy = character_position_y
         
         # Calculate viewport offset to draw, based on character position
         
+        x = 0
+        y = 0
+        
+        
+        
         i = 0
         while i < len(self.map):
-            print(self.map[i], end="")
+            print(self.world_map[i], end="")
             i = i + 1
         
-        print(self.map[0])
+        print(self.world_map[0])
 
 
     """
@@ -68,4 +73,8 @@ class WorldMap:
 
         # Read the map datafile
         with open('data/map.dat') as file:
-            self.map = file.read()
+            self.world_map = file.read()
+
+        for y = 0 to self.map_size_y:
+            for x = 0 to self.map_size_x:
+                
