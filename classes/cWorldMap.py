@@ -7,11 +7,14 @@
 #
 # Todo:                                                                 
 #
+# - Convert textfile to 2d worldmap array
 # - Create a viewport to draw on-screen                                 
 # - Create procedural generated mapdata
 # - Create mapdata with height layers (3d array?)
 #
 # -------------------------------------------------------------------------
+
+
 
 """
 -----------------------------
@@ -20,22 +23,24 @@ WorldMap class
 """
 class WorldMap:
 
-    map_size_x = 80
-    map_size_y = 20
+    map_size_x = 80                           # Width of world map
+    map_size_y = 20                           # Height of world map
     
-    viewport_x = 20
-    viewport_y = 10
+    viewport_x = 20                           # Width of viewport
+    viewport_y = 10                           # Height of viewport
     
-    world_map = []
-    
+    world_map = [map_size_x * map_size_y]
+
+
+
     """
     -----------------------------
     Class initialization
     -----------------------------
     """
     def __init__(self):
-
         self.loadMap()
+
 
 
     """
@@ -45,23 +50,15 @@ class WorldMap:
     -----------------------------
     """
     def draw(self, character_position_x, character_position_y):
-
-        cx = character_position_x
-        cy = character_position_y
-        
         # Calculate viewport offset to draw, based on character position
-        
-        x = 0
-        y = 0
-        
-        
-        
         i = 0
-        while i < len(self.map):
+        while i < len(self.world_map):
             print(self.world_map[i], end="")
             i = i + 1
+
         
         print(self.world_map[0])
+
 
 
     """
@@ -70,11 +67,26 @@ class WorldMap:
     -----------------------------
     """
     def loadMap(self):
+        map_data = None
+        x = 0
+        y = 0
 
+        
         # Read the map datafile
         with open('data/map.dat') as file:
-            self.world_map = file.read()
+            map_data = file.read()
 
-        for y = 0 to self.map_size_y:
-            for x = 0 to self.map_size_x:
+        # Define the 2D array
+        rows, cols = (self.map_size_y, self.map_size_x)
+        self.world_map = [[0]*cols]*rows
+
+
+        # Convert textfile to 2 dimensional array
+        for i in range(len(map_data)):
+            self.world_map[[y]*x] = map_data[i]   # Get a single character
+            x = x + 1                               # Move up the cursor in the array
+
+            if x > self.map_size_x:                 # Running out of columns?
+                x = 0                               # Move cursor to 0 
+                y = y +1                            # Add a new row to array
                 
