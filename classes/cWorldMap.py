@@ -83,7 +83,7 @@ class WorldMap:
 
         # Convert textfile to 2 dimensional array
         for i in range(len(map_data)):
-            self.world_map[[y]*x] = map_data[i]   # Get a single character
+            # self.world_map[[y]*x] = map_data[i]   # Get a single character
             x = x + 1                               # Move up the cursor in the array
 
             if x > self.map_size_x:                 # Running out of columns?
