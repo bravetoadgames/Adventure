@@ -46,6 +46,11 @@ class WorldMap:
     """
     def draw(self, character_position_x, character_position_y):
 
+        x = character_position_x
+        y = character_position_y
+        
+        # Calculate viewport offset to draw, based on character position
+        
         i = 0
         while i < len(self.map):
             print(self.map[i], end="")
