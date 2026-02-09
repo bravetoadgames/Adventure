@@ -56,9 +56,6 @@ class WorldMap:
             print(self.world_map[i], end="")
             i = i + 1
 
-        
-        print(self.world_map[0])
-
 
 
     """
@@ -74,6 +71,6 @@ class WorldMap:
         
         # Read the map datafile
         with open('data/map.dat') as file:
-            map_data = file.read()
+            self.world_map = file.read()
 
         self.world_map = map_data
