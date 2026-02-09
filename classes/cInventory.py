@@ -22,5 +22,5 @@ class Inventory:
         pass
 
     def draw(self):
-        print("INVENTORY")
+        pass
     
